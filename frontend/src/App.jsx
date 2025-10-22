@@ -7,10 +7,12 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { CropPrediction } from './pages/CropPrediction';
 import { FertilizerRecommendation } from './pages/FertilizerRecommendation';
-import { DiseaseDetection } from './pages/DiseaseDetection';
+import { DiseaseDetection } from './pages/DiseasePrediction';
 import { Blogs } from './pages/Blogs';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { Settings } from './pages/Settings';
+import { AddBlog } from './pages/addBlog';
+import { AdminLogin } from './pages/AdminLogin';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route
               path="/crop-prediction"
@@ -60,6 +63,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Settings />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/add-blog"
+              element={
+                <ProtectedRoute>
+                  <AddBlog />
                 </ProtectedRoute>
               }
             />

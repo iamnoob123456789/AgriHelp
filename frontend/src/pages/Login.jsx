@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Sprout, Mail, Lock, AlertCircle } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -15,20 +14,11 @@ export function Login() {
     setError('');
     setLoading(true);
 
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) throw error;
-
+    // Simulate a successful login
+    setTimeout(() => {
       navigate('/');
-    } catch (err) {
-      setError(err.message || 'Failed to login. Please check your credentials.');
-    } finally {
       setLoading(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -101,6 +91,12 @@ export function Login() {
               Don't have an account?{' '}
               <Link to="/signup" className="text-green-600 font-semibold hover:text-green-700">
                 Sign up
+              </Link>
+            </p>
+            <p className="text-gray-600 mt-2">
+              Are you an admin?{' '}
+              <Link to="/admin-login" className="text-blue-600 font-semibold hover:text-blue-700">
+                Admin Login
               </Link>
             </p>
           </div>

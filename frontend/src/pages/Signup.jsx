@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Sprout, Mail, Lock, User, AlertCircle, CheckCircle } from 'lucide-react';
-import { supabase } from '../lib/supabase';
-
 export function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -30,28 +28,14 @@ export function Signup() {
       return;
     }
 
-    try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            name: name,
-          },
-        },
-      });
-
-      if (error) throw error;
-
+    // Simulate a successful signup
+    setTimeout(() => {
       setSuccess(true);
       setTimeout(() => {
         navigate('/');
       }, 2000);
-    } catch (err) {
-      setError(err.message || 'Failed to create account. Please try again.');
-    } finally {
       setLoading(false);
-    }
+    }, 1000);
   };
 
   return (

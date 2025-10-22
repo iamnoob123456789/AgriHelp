@@ -35,8 +35,8 @@ export function Home() {
   return (
     <div className="min-h-screen">
       <section className="relative bg-gradient-to-br from-green-50 via-blue-50 to-green-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center">
+        <div className="w-full">
+          <div className="w-full text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
                 Smart Farming
@@ -67,7 +67,7 @@ export function Home() {
       </section>
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
               Our AI-Powered Features
@@ -100,7 +100,7 @@ export function Home() {
       </section>
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-50 to-blue-50">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <div
@@ -119,7 +119,7 @@ export function Home() {
       </section>
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="w-full text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
             Ready to Transform Your Farm?
           </h2>

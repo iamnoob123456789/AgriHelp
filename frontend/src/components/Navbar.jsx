@@ -1,27 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Sprout, Menu, X, LogOut, User, Home, FileText, Settings } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { useState } from 'react';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
+  const handleLogout = () => {
     navigate('/login');
   };
 
@@ -55,7 +40,6 @@ export function Navbar() {
               <span>Blogs</span>
             </Link>
 
-            {user ? (
               <div className="flex items-center space-x-4">
                 <Link to="/settings" className="text-gray-700 hover:text-green-600 transition-colors">
                   <Settings className="h-5 w-5" />
@@ -68,14 +52,6 @@ export function Navbar() {
                   <span>Logout</span>
                 </button>
               </div>
-            ) : (
-              <Link
-                to="/login"
-                className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-2 rounded-full hover:from-green-600 hover:to-blue-600 transition-all"
-              >
-                Login
-              </Link>
-            )}
           </div>
 
           <button
@@ -125,7 +101,6 @@ export function Navbar() {
             >
               Blogs
             </Link>
-            {user ? (
               <>
                 <Link
                   to="/settings"
@@ -144,15 +119,6 @@ export function Navbar() {
                   Logout
                 </button>
               </>
-            ) : (
-              <Link
-                to="/login"
-                className="block text-gray-700 hover:text-green-600 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Login
-              </Link>
-            )}
           </div>
         </div>
       )}

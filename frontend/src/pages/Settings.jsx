@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { User, Mail, Lock, AlertCircle, CheckCircle } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 
 export function Settings() {
   const [user, setUser] = useState(null);
@@ -13,70 +12,14 @@ export function Settings() {
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) {
-        setUser(user);
-        setEmail(user.email || '');
-        setName(user.user_metadata?.name || '');
-      }
-    });
-  }, []);
-
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
-    setLoading(true);
-
-    try {
-      const { error } = await supabase.auth.updateUser({
-        data: { name: name },
-      });
-
-      if (error) throw error;
-
-      setSuccess('Profile updated successfully!');
-    } catch (err) {
-      setError(err.message || 'Failed to update profile');
-    } finally {
-      setLoading(false);
-    }
+    // TODO: Implement profile update logic
   };
 
   const handleUpdatePassword = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
-
-    if (newPassword !== confirmPassword) {
-      setError('New passwords do not match');
-      return;
-    }
-
-    if (newPassword.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const { error } = await supabase.auth.updateUser({
-        password: newPassword,
-      });
-
-      if (error) throw error;
-
-      setSuccess('Password updated successfully!');
-      setCurrentPassword('');
-      setNewPassword('');
-      setConfirmPassword('');
-    } catch (err) {
-      setError(err.message || 'Failed to update password');
-    } finally {
-      setLoading(false);
-    }
+    // TODO: Implement password update logic
   };
 
   return (
