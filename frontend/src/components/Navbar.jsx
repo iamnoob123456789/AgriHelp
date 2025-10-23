@@ -1,14 +1,30 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Sprout, Menu, X, LogOut, User, Home, FileText, Settings } from 'lucide-react';
-import { useState } from 'react';
+import { Sprout, Menu, X, LogOut, Home, FileText, Settings } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('authToken'));
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    try {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('authUser');
+    } catch (e) {}
+    setIsAuthenticated(false);
     navigate('/login');
   };
+
+  useEffect(() => {
+    const updateAuth = () => setIsAuthenticated(!!localStorage.getItem('authToken'));
+    updateAuth();
+    const onStorage = (e) => {
+      if (e.key === 'authToken') updateAuth();
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, []);
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -26,32 +42,41 @@ export function Navbar() {
               <Home className="h-4 w-4" />
               <span>Home</span>
             </Link>
-            <Link to="/crop-prediction" className="text-gray-700 hover:text-green-600 transition-colors">
-              Crop Prediction
-            </Link>
-            <Link to="/fertilizer" className="text-gray-700 hover:text-green-600 transition-colors">
-              Fertilizer
-            </Link>
-            <Link to="/disease-detection" className="text-gray-700 hover:text-green-600 transition-colors">
-              Disease Detection
-            </Link>
-            <Link to="/blogs" className="text-gray-700 hover:text-green-600 transition-colors flex items-center space-x-1">
-              <FileText className="h-4 w-4" />
-              <span>Blogs</span>
-            </Link>
-
-              <div className="flex items-center space-x-4">
-                <Link to="/settings" className="text-gray-700 hover:text-green-600 transition-colors">
-                  <Settings className="h-5 w-5" />
+            {isAuthenticated ? (
+              <>
+                <Link to="/add-blog" className="text-gray-700 hover:text-green-600 transition-colors">
+                  Add Blog
                 </Link>
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center space-x-1 text-gray-700 hover:text-red-600 transition-colors"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span>Logout</span>
-                </button>
-              </div>
+                <Link to="/crop-prediction" className="text-gray-700 hover:text-green-600 transition-colors">
+                  Crop Prediction
+                </Link>
+                <Link to="/fertilizer" className="text-gray-700 hover:text-green-600 transition-colors">
+                  Fertilizer
+                </Link>
+                <Link to="/disease-detection" className="text-gray-700 hover:text-green-600 transition-colors">
+                  Disease Detection
+                </Link>
+                <div className="flex items-center space-x-4">
+                  <Link to="/settings" className="text-gray-700 hover:text-green-600 transition-colors">
+                    <Settings className="h-5 w-5" />
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center space-x-1 text-gray-700 hover:text-red-600 transition-colors"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span>Logout</span>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link to="/blogs" className="text-gray-700 hover:text-green-600 transition-colors flex items-center space-x-1">
+                  <FileText className="h-4 w-4" />
+                  <span>Blogs</span>
+                </Link>
+              </>
+            )}
           </div>
 
           <button
@@ -73,35 +98,36 @@ export function Navbar() {
             >
               Home
             </Link>
-            <Link
-              to="/crop-prediction"
-              className="block text-gray-700 hover:text-green-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Crop Prediction
-            </Link>
-            <Link
-              to="/fertilizer"
-              className="block text-gray-700 hover:text-green-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Fertilizer
-            </Link>
-            <Link
-              to="/disease-detection"
-              className="block text-gray-700 hover:text-green-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Disease Detection
-            </Link>
-            <Link
-              to="/blogs"
-              className="block text-gray-700 hover:text-green-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Blogs
-            </Link>
+            {isAuthenticated ? (
               <>
+                <Link
+                  to="/add-blog"
+                  className="block text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Add Blog
+                </Link>
+                <Link
+                  to="/crop-prediction"
+                  className="block text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Crop Prediction
+                </Link>
+                <Link
+                  to="/fertilizer"
+                  className="block text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Fertilizer
+                </Link>
+                <Link
+                  to="/disease-detection"
+                  className="block text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Disease Detection
+                </Link>
                 <Link
                   to="/settings"
                   className="block text-gray-700 hover:text-green-600 transition-colors"
@@ -119,6 +145,17 @@ export function Navbar() {
                   Logout
                 </button>
               </>
+            ) : (
+              <>
+                <Link
+                  to="/blogs"
+                  className="block text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Blogs
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}

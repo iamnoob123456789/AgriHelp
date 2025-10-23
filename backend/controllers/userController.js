@@ -15,6 +15,7 @@ const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
+    console.log('[API][REGISTER] Incoming:', { name, email });
     const userExists = await User.findOne({ email });
 
     if (userExists) {
@@ -28,17 +29,20 @@ const registerUser = async (req, res) => {
     });
 
     if (user) {
-      res.status(201).json({
+      const response = {
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
         token: generateToken(user._id),
-      });
+      };
+      console.log('[API][REGISTER] Success:', { _id: user._id, email: user.email, isAdmin: user.isAdmin });
+      res.status(201).json(response);
     } else {
       res.status(400).json({ message: 'Invalid user data' });
     }
   } catch (error) {
+    console.error('[API][REGISTER] Error:', error?.message || error);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -50,20 +54,24 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    console.log('[API][LOGIN] Incoming:', { email });
     const user = await User.findOne({ email });
 
     if (user && (await user.matchPassword(password))) {
-      res.json({
+      const response = {
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
         token: generateToken(user._id),
-      });
+      };
+      console.log('[API][LOGIN] Success:', { _id: user._id, email: user.email, isAdmin: user.isAdmin });
+      res.json(response);
     } else {
       res.status(401).json({ message: 'Invalid email or password' });
     }
   } catch (error) {
+    console.error('[API][LOGIN] Error:', error?.message || error);
     res.status(500).json({ message: 'Server error' });
   }
 };

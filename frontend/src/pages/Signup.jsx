@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Sprout, Mail, Lock, User, AlertCircle, CheckCircle } from 'lucide-react';
+
 export function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -28,14 +29,33 @@ export function Signup() {
       return;
     }
 
-    // Simulate a successful signup
-    setTimeout(() => {
+    try {
+      const payload = { name, email, password };
+      console.log('[SIGNUP] Request payload:', payload);
+      const res = await fetch('/api/users/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      console.log('[SIGNUP] Response:', data);
+
+      if (!res.ok) {
+        throw new Error(data?.message || 'Signup failed');
+      }
+
+      localStorage.setItem('authToken', data.token);
+      localStorage.setItem('authUser', JSON.stringify(data));
+
       setSuccess(true);
       setTimeout(() => {
         navigate('/');
-      }, 2000);
+      }, 1000);
+    } catch (err) {
+      setError(err.message || 'Signup failed');
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (

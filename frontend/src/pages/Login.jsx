@@ -14,11 +14,31 @@ export function Login() {
     setError('');
     setLoading(true);
 
-    // Simulate a successful login
-    setTimeout(() => {
+    try {
+      const payload = { email, password };
+      console.log('[LOGIN] Request payload:', payload);
+      const res = await fetch('/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      console.log('[LOGIN] Response:', data);
+
+      if (!res.ok) {
+        throw new Error(data?.message || 'Login failed');
+      }
+
+      // Persist auth
+      localStorage.setItem('authToken', data.token);
+      localStorage.setItem('authUser', JSON.stringify(data));
+
       navigate('/');
+    } catch (err) {
+      setError(err.message || 'Login failed');
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
