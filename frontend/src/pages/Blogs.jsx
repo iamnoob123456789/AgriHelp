@@ -66,20 +66,20 @@ export function Blogs() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-green-50">
-      <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex justify-center mb-4">
-            <FileText className="h-16 w-16" />
+      <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-16 lg:py-24 xl:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-full lg:max-w-7xl xl:max-w-full mx-auto text-center px-4 lg:px-12 xl:px-24">
+          <div className="flex justify-center mb-4 lg:mb-6">
+            <FileText className="h-16 w-16 lg:h-20 lg:w-20 xl:h-24 xl:w-24" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Agriculture Insights</h1>
-          <p className="text-xl max-w-2xl mx-auto opacity-90">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 lg:mb-6">Agriculture Insights</h1>
+          <p className="text-xl lg:text-2xl xl:text-3xl max-w-4xl mx-auto opacity-90">
             Discover expert tips, guides, and best practices for modern farming
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-full lg:max-w-7xl xl:max-w-full mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 py-12 lg:py-16 xl:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 xl:gap-10">
           {blogs.map((blog) => (
             <article
               key={blog.id}
@@ -92,32 +92,32 @@ export function Blogs() {
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-6 lg:p-7 xl:p-8">
                 <div className="flex flex-wrap gap-2 mb-3">
                   {blog.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full font-medium"
+                      className="text-xs lg:text-sm px-3 py-1 bg-green-100 text-green-700 rounded-full font-medium"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h2 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 hover:text-green-600 transition-colors">
+                <h2 className="text-xl lg:text-2xl font-bold text-gray-800 mb-3 line-clamp-2 hover:text-green-600 transition-colors">
                   {blog.title}
                 </h2>
-                <p className="text-gray-600 mb-4 line-clamp-3">{blog.excerpt}</p>
-                <div className="flex items-center justify-between text-sm text-gray-500 border-t pt-4">
+                <p className="text-gray-600 lg:text-lg mb-4 line-clamp-3">{blog.excerpt}</p>
+                <div className="flex items-center justify-between text-sm lg:text-base text-gray-500 border-t pt-4">
                   <div className="flex items-center space-x-2">
-                    <User className="h-4 w-4" />
+                    <User className="h-4 w-4 lg:h-5 lg:w-5" />
                     <span>{blog.author}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="h-4 w-4 lg:h-5 lg:w-5" />
                     <span>{new Date(blog.date).toLocaleDateString()}</span>
                   </div>
                 </div>
-                <div className="mt-3 text-sm text-gray-500">{blog.readTime}</div>
+                <div className="mt-3 text-sm lg:text-base text-gray-500">{blog.readTime}</div>
               </div>
             </article>
           ))}

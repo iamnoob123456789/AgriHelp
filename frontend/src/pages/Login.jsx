@@ -42,17 +42,17 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-green-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <div className="text-center mb-8">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 bg-gradient-to-br from-green-400 to-blue-500 rounded-full">
-                <Sprout className="h-10 w-10 text-white" />
+    <div className="h-screen bg-gradient-to-br from-green-50 via-blue-50 to-green-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md lg:max-w-2xl xl:max-w-4xl">
+        <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 xl:p-16">
+          <div className="text-center mb-8 lg:mb-12">
+            <div className="flex justify-center mb-4 lg:mb-6">
+              <div className="p-3 lg:p-4 bg-gradient-to-br from-green-400 to-blue-500 rounded-full">
+                <Sprout className="h-10 w-10 lg:h-14 lg:w-14 text-white" />
               </div>
             </div>
-            <h2 className="text-3xl font-bold text-gray-800">Welcome Back</h2>
-            <p className="text-gray-600 mt-2">Sign in to your AgriHelp account</p>
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800">Welcome Back</h2>
+            <p className="text-gray-600 mt-2 lg:text-lg">Sign in to your AgriHelp account</p>
           </div>
 
           {error && (
@@ -62,7 +62,7 @@ export function Login() {
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-6 lg:space-y-8">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Email Address
