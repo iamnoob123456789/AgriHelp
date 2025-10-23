@@ -15,10 +15,11 @@ const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
-    console.log('[API][REGISTER] Incoming:', { name, email });
+    console.log('[API][REGISTER] Incoming:', { name, email, password: '***' });
     const userExists = await User.findOne({ email });
 
     if (userExists) {
+      console.log('[API][REGISTER] User exists:', { email });
       return res.status(400).json({ message: 'User already exists' });
     }
 
@@ -37,8 +38,10 @@ const registerUser = async (req, res) => {
         token: generateToken(user._id),
       };
       console.log('[API][REGISTER] Success:', { _id: user._id, email: user.email, isAdmin: user.isAdmin });
+      console.log('[API][REGISTER] Response:', response);
       res.status(201).json(response);
     } else {
+      console.log('[API][REGISTER] Invalid user data:', { name, email });
       res.status(400).json({ message: 'Invalid user data' });
     }
   } catch (error) {
@@ -54,7 +57,7 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    console.log('[API][LOGIN] Incoming:', { email });
+    console.log('[API][LOGIN] Incoming:', { email, password: '***' });
     const user = await User.findOne({ email });
 
     if (user && (await user.matchPassword(password))) {
@@ -66,8 +69,10 @@ const loginUser = async (req, res) => {
         token: generateToken(user._id),
       };
       console.log('[API][LOGIN] Success:', { _id: user._id, email: user.email, isAdmin: user.isAdmin });
+      console.log('[API][LOGIN] Response:', response);
       res.json(response);
     } else {
+      console.log('[API][LOGIN] Invalid email or password:', { email });
       res.status(401).json({ message: 'Invalid email or password' });
     }
   } catch (error) {
@@ -84,6 +89,7 @@ const getMe = async (req, res) => {
     const user = await User.findById(req.user.id).select('-password');
     res.status(200).json(user);
   } catch (error) {
+    console.error('[API][REGISTER] Error:', error?.message || error);
     res.status(500).json({ message: 'Server error' });
   }
 };
