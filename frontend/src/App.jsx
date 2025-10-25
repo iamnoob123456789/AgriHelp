@@ -65,7 +65,7 @@ function App() {
             }
           />
           <Route
-            path="/add-blog"
+            path="/addBlog"
             element={
               <ProtectedRoute>
                 <AddBlog />

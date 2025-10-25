@@ -1,7 +1,14 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Sprout, Droplets, Bug, TrendingUp, Users, Award } from 'lucide-react';
 
 export function Home() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    setIsAuthenticated(!!token);
+  }, []);
   const features = [
     {
       icon: <Sprout className="h-12 w-12" />,
@@ -118,23 +125,42 @@ export function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="w-full text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-            Ready to Transform Your Farm?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join thousands of farmers who are already using AgriHelp to increase their yields
-            and make smarter farming decisions.
-          </p>
-          <Link
-            to="/signup"
-            className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all transform hover:scale-105 shadow-lg"
-          >
-            Create Free Account
-          </Link>
-        </div>
-      </section>
+      {isAuthenticated ? (
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="w-full text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+              Share Your Knowledge
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Create a blog post to share your farming experiences and insights with the community.
+            </p>
+            <Link
+              to="/addBlog"
+              className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all transform hover:scale-105 shadow-lg"
+            >
+              Create Blog Post
+            </Link>
+          </div>
+        </section>
+      ) : (
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="w-full text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+              Ready to Transform Your Farm?
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Join thousands of farmers who are already using AgriHelp to increase their yields
+              and make smarter farming decisions.
+            </p>
+            <Link
+              to="/signup"
+              className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all transform hover:scale-105 shadow-lg"
+            >
+              Create Free Account
+            </Link>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
