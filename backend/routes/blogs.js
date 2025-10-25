@@ -7,8 +7,9 @@ const {
   deleteBlog,
 } = require('../controllers/blogController');
 const { protect } = require('../middleware/authMiddleware');
+const upload = require('../middleware/multer');
 
-router.route('/').get(getBlogs).post(protect, createBlog);
+router.route('/').get(getBlogs).post(protect, upload, createBlog);
 router
   .route('/:id')
   .get(getBlogById)

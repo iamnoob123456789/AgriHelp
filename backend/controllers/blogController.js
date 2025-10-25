@@ -1,4 +1,7 @@
 const Blog = require('../models/blog.model');
+const cloudinary = require('../config/cloudinary');
+const DatauriParser = require('datauri/parser');
+const path = require('path');
 
 // @desc    Get all blogs
 // @route   GET /api/blogs
@@ -16,14 +19,25 @@ const getBlogs = async (req, res) => {
 // @route   POST /api/blogs
 // @access  Private
 const createBlog = async (req, res) => {
-  const { heading, image } = req.body;
+  const { title, content } = req.body;
+
+  if (!req.file) {
+    return res.status(400).json({ message: 'Please upload an image' });
+  }
+
+  const parser = new DatauriParser();
+  const dataUri = parser.format(path.extname(req.file.originalname).toString(), req.file.buffer);
 
   try {
+    const result = await cloudinary.uploader.upload(dataUri.content, {
+      folder: 'agrihelp_blogs',
+    });
+
     const blog = new Blog({
-      heading,
-      image,
+      title,
+      content,
+      image: result.secure_url,
       user: req.user._id,
-      username: req.user.name,
     });
 
     const createdBlog = await blog.save();

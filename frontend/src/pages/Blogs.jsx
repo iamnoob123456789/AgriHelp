@@ -26,7 +26,6 @@ export function Blogs() {
       author: 'Mark Thompson',
       date: '2024-03-12',
       tags: ['Organic Farming', 'Fertilizers', 'Sustainability'],
-      readTime: '7 min read'
     },
     {
       id: 3,
@@ -36,7 +35,6 @@ export function Blogs() {
       author: 'Emily Chen',
       date: '2024-03-10',
       tags: ['Disease Management', 'Plant Health', 'Prevention'],
-      readTime: '6 min read'
     },
     {
       id: 4,
@@ -46,7 +44,6 @@ export function Blogs() {
       author: 'David Kumar',
       date: '2024-03-08',
       tags: ['Precision Agriculture', 'Technology', 'Productivity'],
-      readTime: '8 min read'
     },
     {
       id: 5,
@@ -56,7 +53,6 @@ export function Blogs() {
       author: 'Lisa Martinez',
       date: '2024-03-05',
       tags: ['Irrigation', 'Water Conservation', 'Efficiency'],
-      readTime: '6 min read'
     },
     {
       id: 6,
@@ -66,7 +62,6 @@ export function Blogs() {
       author: 'Dr. James Wilson',
       date: '2024-03-01',
       tags: ['Climate Change', 'Adaptation', 'Sustainability'],
-      readTime: '9 min read'
     }
   ];
 
@@ -123,7 +118,6 @@ export function Blogs() {
                     <span>{new Date(blog.date).toLocaleDateString()}</span>
                   </div>
                 </div>
-                <div className="mt-3 text-sm lg:text-base text-gray-500">{blog.readTime}</div>
               </div>
             </article>
           ))}

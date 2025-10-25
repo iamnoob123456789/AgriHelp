@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const blogSchema = new mongoose.Schema({
-  heading: {
+  title: {
     type: String,
     required: true,
     trim: true,
@@ -10,15 +10,19 @@ const blogSchema = new mongoose.Schema({
     type: String, // Cloudinary URL
     required: true,
   },
+  content:{
+     type:String,
+     required:true,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'User',
   },
-  username: {
-    type: String,
-    required: true,
-  },
+  date:{
+     type:Date,
+     default:Date.now,
+  }
 }, { timestamps: true });
 
 const Blog = mongoose.model('Blog', blogSchema);
