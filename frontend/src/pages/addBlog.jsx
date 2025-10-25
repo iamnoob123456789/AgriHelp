@@ -5,7 +5,9 @@ import { Camera, User, Calendar } from 'lucide-react';
 
 export function AddBlog() {
   const [title, setTitle] = useState('');
+  const [subtitle, setSubtitle] = useState('');
   const [content, setContent] = useState('');
+  const [tags, setTags] = useState('');
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [username, setUsername] = useState('Admin');
@@ -36,7 +38,9 @@ export function AddBlog() {
 
     const formData = new FormData();
     formData.append('title', title);
+    formData.append('subtitle', subtitle);
     formData.append('content', content);
+    formData.append('tags', tags);
     formData.append('image', image);
 
     try {
@@ -85,6 +89,21 @@ export function AddBlog() {
               />
             </div>
             <div>
+              <label htmlFor="subtitle" className="sr-only">
+                Subtitle
+              </label>
+              <input
+                id="subtitle"
+                name="subtitle"
+                type="text"
+                required
+                className="appearance-none rounded-md relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                placeholder="Enter a subtitle"
+                value={subtitle}
+                onChange={(e) => setSubtitle(e.target.value)}
+              />
+            </div>
+            <div>
               <label htmlFor="content" className="sr-only">
                 Content
               </label>
@@ -98,6 +117,20 @@ export function AddBlog() {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
+            </div>
+            <div>
+              <label htmlFor="tags" className="sr-only">
+                Tags
+              </label>
+              <input
+                id="tags"
+                name="tags"
+                type="text"
+                className="appearance-none rounded-md relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                placeholder="Enter tags, separated by commas"
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+              />
             </div>
           </div>
 

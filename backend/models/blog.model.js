@@ -6,6 +6,11 @@ const blogSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  subtitle:{
+    type:String,
+    required:true,
+    trim:true,
+  },
   image: {
     type: String, // Cloudinary URL
     required: true,
@@ -19,10 +24,17 @@ const blogSchema = new mongoose.Schema({
     required: true,
     ref: 'User',
   },
-  date:{
-     type:Date,
-     default:Date.now,
-  }
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  tags: {
+    type: [String],
+    default: [],
+  },
+  readTime: {
+    type: String,
+  },
 }, { timestamps: true });
 
 const Blog = mongoose.model('Blog', blogSchema);

@@ -1,69 +1,42 @@
-import { FileText, Calendar, User } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { FileText, Calendar, User, Clock } from 'lucide-react';
 
 export function Blogs() {
-  const blogs = [
-    {
-  id: 1,
-  title: 'Understanding Soil pH and Its Impact on Crop Growth',
-  excerpt: 'Learn how soil pH affects nutrient availability and what you can do to optimize it for better yields.',
-  content: `Soil pH plays a crucial role in determining the availability of essential nutrients to plants. When the soil is too acidic or too alkaline, certain nutrients become less accessible, which can lead to deficiencies and poor crop growth. Understanding the pH of your soil allows you to make informed decisions about fertilization and amendments.
-            Adjusting soil pH can significantly improve plant health and productivity. For acidic soils, adding lime can help raise the pH, while alkaline soils can be treated with sulfur or organic matter to lower the pH. Regular soil testing is essential to monitor changes and ensure that corrective measures are effective over time.
-            Maintaining the proper soil pH not only enhances nutrient uptake but also supports beneficial microbial activity in the soil. Healthy microbes contribute to better soil structure, organic matter decomposition, and disease suppression. By managing soil pH, farmers and gardeners can create optimal conditions for sustainable and high-yield crop production.`,
-  image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg',
-  author: 'Dr. Sarah Johnson',
-  date: '2024-03-15',
-  tags: ['Soil Health', 'pH Management', 'Nutrients'],
-  readTime: '5 min read'
-},
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-    {
-      id: 2,
-      title: 'Top 10 Organic Fertilizers for Sustainable Farming',
-      excerpt: 'Discover the best organic fertilizers that can improve soil health while maintaining environmental sustainability.',
-      content: `Organic fertilizers are a sustainable and eco-friendly alternative to chemical fertilizers, providing essential nutrients to plants while promoting soil health and biodiversity. By using organic fertilizers, farmers can reduce their reliance on synthetic chemicals, minimize environmental pollution, and maintain soil fertility over time.
-            Common organic fertilizers include compost, manure, bone meal, fish emulsion, and seaweed extract. These natural sources of nutrients are rich in micronutrients and beneficial microbes, which help improve soil structure and microbial activity. By incorporating organic fertilizers into their farming practices, farmers can create a more sustainable and resilient agricultural system that supports both plant growth and environmental health.`,
-      image: 'https://images.pexels.com/photos/6129162/pexels-photo-6129162.jpeg',
-      author: 'Mark Thompson',
-      date: '2024-03-12',
-      tags: ['Organic Farming', 'Fertilizers', 'Sustainability'],
-    },
-    {
-      id: 3,
-      title: 'Early Detection of Plant Diseases: A Complete Guide',
-      excerpt: 'Identify common plant diseases early and take preventive measures to protect your crops.',
-      image: 'https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg',
-      author: 'Emily Chen',
-      date: '2024-03-10',
-      tags: ['Disease Management', 'Plant Health', 'Prevention'],
-    },
-    {
-      id: 4,
-      title: 'Maximizing Crop Yield with Precision Agriculture',
-      excerpt: 'Explore how modern technology and data-driven approaches can significantly boost your farm productivity.',
-      image: 'https://images.pexels.com/photos/2132171/pexels-photo-2132171.jpeg',
-      author: 'David Kumar',
-      date: '2024-03-08',
-      tags: ['Precision Agriculture', 'Technology', 'Productivity'],
-    },
-    {
-      id: 5,
-      title: 'Water Conservation Techniques for Modern Farming',
-      excerpt: 'Learn effective irrigation methods and water-saving strategies to make your farm more efficient.',
-      image: 'https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg',
-      author: 'Lisa Martinez',
-      date: '2024-03-05',
-      tags: ['Irrigation', 'Water Conservation', 'Efficiency'],
-    },
-    {
-      id: 6,
-      title: 'Climate-Smart Agriculture: Adapting to Change',
-      excerpt: 'Understand how to adjust your farming practices to cope with changing climate patterns.',
-      image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg',
-      author: 'Dr. James Wilson',
-      date: '2024-03-01',
-      tags: ['Climate Change', 'Adaptation', 'Sustainability'],
-    }
-  ];
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const { data } = await axios.get('/api/blogs');
+        setBlogs(data);
+      } catch (err) {
+        setError('Could not fetch blogs');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-green-50">
@@ -83,7 +56,7 @@ export function Blogs() {
         <div className="flex flex-col items-center gap-12">
           {blogs.map((blog) => (
             <article
-              key={blog.id}
+              key={blog._id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-2 overflow-hidden w-full max-w-4xl md:flex"
             >
               <div className="md:w-1/3">
@@ -107,15 +80,19 @@ export function Blogs() {
                 <h2 className="text-xl lg:text-2xl font-bold text-gray-800 mb-3 hover:text-green-600 transition-colors">
                   {blog.title}
                 </h2>
-                <p className="text-gray-600 lg:text-lg mb-4 flex-grow">{blog.excerpt}</p>
+                <p className="text-gray-600 lg:text-lg mb-4 flex-grow">{blog.subtitle}</p>
                 <div className="flex items-center justify-between text-sm lg:text-base text-gray-500 border-t pt-4 mt-auto">
                   <div className="flex items-center space-x-2">
                     <User className="h-4 w-4 lg:h-5 lg:w-5" />
-                    <span>{blog.author}</span>
+                    <span>{blog.user.name}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Calendar className="h-4 w-4 lg:h-5 lg:w-5" />
                     <span>{new Date(blog.date).toLocaleDateString()}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Clock className="h-4 w-4 lg:h-5 lg:w-5" />
+                    <span>{blog.readTime}</span>
                   </div>
                 </div>
               </div>

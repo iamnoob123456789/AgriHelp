@@ -19,7 +19,7 @@ const getBlogs = async (req, res) => {
 // @route   POST /api/blogs
 // @access  Private
 const createBlog = async (req, res) => {
-  const { title, content } = req.body;
+  const { title, subtitle, content, tags } = req.body;
 
   if (!req.file) {
     return res.status(400).json({ message: 'Please upload an image' });
@@ -33,11 +33,18 @@ const createBlog = async (req, res) => {
       folder: 'agrihelp_blogs',
     });
 
+    const wordsPerMinute = 200;
+    const wordCount = content.split(/\s+/).length;
+    const readTime = Math.ceil(wordCount / wordsPerMinute);
+
     const blog = new Blog({
       title,
+      subtitle,
       content,
       image: result.secure_url,
       user: req.user._id,
+      tags: tags ? tags.split(',').map(tag => tag.trim()) : [],
+      readTime: `${readTime} min read`,
     });
 
     const createdBlog = await blog.save();
