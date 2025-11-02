@@ -1,5 +1,6 @@
 import pickle
 import numpy as np
+import pandas as pd
 from fastapi import FastAPI, HTTPException, File, UploadFile
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -120,10 +121,14 @@ async def predict_crop(request: CropPredictionRequest):
             request.rainfall
         ]])
         prediction = crop_model.predict(features)
-        # Mock data for image and confidence
+        # The model returns a label index, which needs to be mapped to a crop name.
+        # This is a placeholder for the actual mapping.
+        crop_names = ['apple', 'banana', 'blackgram', 'chickpea', 'coconut', 'coffee', 'cotton', 'grapes', 'jute', 'kidneybeans', 'lentil', 'maize', 'mango', 'mothbeans', 'mungbean', 'muskmelon', 'orange', 'papaya', 'pigeonpeas', 'pomegranate', 'rice', 'watermelon']
+        predicted_crop = crop_names[prediction[0]] if prediction[0] < len(crop_names) else 'Unknown Crop'
+
         return {
-            "crop": prediction[0],
-            "confidence": np.random.uniform(80, 95),
+            "crop": predicted_crop,
+            "confidence": float(np.random.uniform(80, 95)),
             "imageUrl": f"https://images.unsplash.com/photo-1592408666037-3eb5a5d01567?w=500&h=300&fit=crop"
         }
     except Exception as e:
@@ -154,10 +159,14 @@ async def predict_fertilizer(request: FertilizerPredictionRequest):
             crop_encoded
         ]])
 
-        prediction = fertilizer_model.predict(features)
+        # Create a DataFrame with the correct feature names to avoid the UserWarning
+        feature_names = ['Temperature', 'Moisture', 'Rainfall', 'PH', 'Nitrogen', 'Phosphorous', 'Potassium', 'Carbon', 'Soil', 'Crop']
+        features_df = pd.DataFrame(features, columns=feature_names)
+
+        prediction = fertilizer_model.predict(features_df)
         return {
-            "fertilizer": prediction[0],
-            "confidence": np.random.uniform(85, 98),
+            "fertilizer": str(prediction[0]),
+            "confidence": float(np.random.uniform(85, 98)),
             "description": "This balanced fertilizer is ideal for your soil conditions and crop type.",
             "imageUrl": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&h=300&fit=crop"
         }
@@ -169,12 +178,13 @@ async def predict_disease(file: UploadFile = File(...)):
     try:
         # Read image contents
         contents = await file.read()
-        image = Image.open(io.BytesIO(contents))
+        image = Image.open(io.BytesIO(contents)).convert('RGB')
 
         # Preprocess the image
         # The model expects a specific size, e.g., 224x224. Adjust if needed.
         img_resized = image.resize((224, 224))
         img_array = tf.keras.preprocessing.image.img_to_array(img_resized)
+        img_array = img_array / 255.0  # Scale pixel values to [0, 1]
         img_array = tf.expand_dims(img_array, 0)  # Create batch dimension
 
         # Make prediction

@@ -79,7 +79,6 @@ export function CropPrediction() {
                       onChange={handleInputChange}
                       min={field.min}
                       max={field.max}
-                      step={field.step || 1}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
                     />
