@@ -7,7 +7,7 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { CropPrediction } from './pages/CropPrediction';
 import { FertilizerRecommendation } from './pages/FertilizerRecommendation';
-import { DiseaseDetection } from './pages/DiseasePrediction';
+import { DiseaseDetection } from "./pages/DiseasePrediction";
 import { Blogs } from './pages/Blogs';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { Settings } from './pages/Settings';

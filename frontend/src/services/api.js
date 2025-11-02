@@ -2,24 +2,20 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:8000'; // The URL of your Python ML server
 
-export const predictCrop = async (features) => {
+export const predictCrop = async (data) => {
   try {
-    const response = await axios.post(`${API_URL}/predict/crop`, {
-      features: features
-    });
-    return response.data.prediction;
+    const response = await axios.post(`${API_URL}/predict/crop`, data);
+    return response.data;
   } catch (error) {
     console.error('Error predicting crop:', error);
     throw error;
   }
 };
 
-export const predictFertilizer = async (features) => {
+export const predictFertilizer = async (data) => {
   try {
-    const response = await axios.post(`${API_URL}/predict/fertilizer`, {
-      features: features
-    });
-    return response.data.prediction;
+    const response = await axios.post(`${API_URL}/predict/fertilizer`, data);
+    return response.data;
   } catch (error) {
     console.error('Error predicting fertilizer:', error);
     throw error;
@@ -31,7 +27,7 @@ export const predictDisease = async (imageFile) => {
     const formData = new FormData();
     formData.append('file', imageFile);
     
-        const response = await axios.post(`${API_URL}/predict/disease`, formData, {
+    const response = await axios.post(`${API_URL}/predict/disease`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

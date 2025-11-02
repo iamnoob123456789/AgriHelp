@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Sprout, Loader2 } from 'lucide-react';
+import { predictCrop } from '../services/api';
 
 export function CropPrediction() {
   const [formData, setFormData] = useState({
@@ -28,19 +29,8 @@ export function CropPrediction() {
     setResult(null);
 
     try {
-      // This would be your actual API call
-      // const prediction = await predictCrop(formData);
-      // setResult(prediction);
-      
-      // Mock response for demonstration
-      setTimeout(() => {
-        setResult({
-          crop: "Rice",
-          confidence: 85,
-          imageUrl: "https://images.unsplash.com/photo-1592408666037-3eb5a5d01567?w=500&h=300&fit=crop"
-        });
-        setLoading(false);
-      }, 1500);
+      const prediction = await predictCrop(formData);
+      setResult(prediction);
     } catch (error) {
       console.error('Prediction failed:', error);
       setLoading(false);

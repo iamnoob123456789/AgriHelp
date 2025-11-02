@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Droplets, Loader2 } from 'lucide-react';
+import { predictFertilizer } from '../services/api';
 
 export function FertilizerRecommendation() {
   const [formData, setFormData] = useState({
@@ -31,20 +32,8 @@ export function FertilizerRecommendation() {
     setResult(null);
 
     try {
-      // This would be your actual API call
-      // const recommendation = await recommendFertilizer(formData);
-      // setResult(recommendation);
-      
-      // Mock response for demonstration
-      setTimeout(() => {
-        setResult({
-          fertilizer: "NPK 10-26-26",
-          confidence: 88,
-          description: "This balanced fertilizer is ideal for your soil conditions and crop type. It provides adequate phosphorus for root development while maintaining proper nitrogen and potassium levels.",
-          imageUrl: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500&h=300&fit=crop"
-        });
-        setLoading(false);
-      }, 1500);
+      const recommendation = await predictFertilizer(formData);
+      setResult(recommendation);
     } catch (error) {
       console.error('Recommendation failed:', error);
       setLoading(false);

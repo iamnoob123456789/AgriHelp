@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Bug, Upload, Loader2, X } from 'lucide-react';
+import { predictDisease } from '../services/api';
 
 export function DiseaseDetection() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -34,24 +35,12 @@ export function DiseaseDetection() {
     setResult(null);
 
     try {
-      // This would be your actual API call
-      // const prediction = await detectDisease(selectedFile);
-      // setResult(prediction);
-      
-      // Mock response for demonstration
-      setTimeout(() => {
-        setResult({
-          disease: "Leaf Rust",
-          confidence: 92,
-          remedies: [
-            "Apply copper-based fungicide every 7-10 days",
-            "Remove and destroy infected leaves",
-            "Ensure proper air circulation around plants",
-            "Avoid overhead watering to reduce moisture on leaves"
-          ]
-        });
-        setLoading(false);
-      }, 2000);
+      const prediction = await predictDisease(selectedFile);
+      setResult({
+        disease: prediction.disease,
+        confidence: prediction.confidence,
+        remedies: prediction.remedies || ["No specific remedy available."]
+      });
     } catch (error) {
       console.error('Detection failed:', error);
       setLoading(false);
@@ -146,45 +135,26 @@ export function DiseaseDetection() {
               <div className="bg-white rounded-2xl shadow-xl p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Detection Result</h2>
                 <div className="space-y-6">
-                  <div>
+                  <div className="mb-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-gray-600">Detected Disease</span>
                       <span className="text-sm font-medium text-orange-600">
-                        {result.confidence}% Confidence
+                        {result.disease}
                       </span>
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-800">{result.disease}</h3>
+                    <div className="text-sm text-gray-500">
+                      Confidence: {result.confidence.toFixed(2)}%
+                    </div>
                   </div>
 
-                  <div className="w-full bg-gray-200 rounded-full h-3">
-                    <div
-                      className="bg-gradient-to-r from-orange-500 to-red-500 h-3 rounded-full transition-all duration-500"
-                      style={{ width: `${result.confidence}%` }}
-                    ></div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-3">Recommended Remedies:</h4>
-                    <ul className="space-y-2">
-                      {result.remedies.map((remedy, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start space-x-2 bg-orange-50 border border-orange-200 rounded-lg p-3"
-                        >
-                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center text-sm font-semibold">
-                            {index + 1}
-                          </span>
-                          <span className="text-gray-700">{remedy}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {result.disease === 'Healthy' && (
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                      <p className="text-green-800 font-semibold">
-                        Great news! Your plant appears to be healthy. Keep up the good care!
-                      </p>
+                  {result.remedies && result.remedies.length > 0 && (
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                      <h3 className="font-semibold text-blue-800 mb-2">Recommended Actions:</h3>
+                      <ul className="list-disc pl-5 space-y-1 text-blue-700">
+                        {result.remedies.map((remedy, index) => (
+                          <li key={index}>{remedy}</li>
+                        ))}
+                      </ul>
                     </div>
                   )}
                 </div>
