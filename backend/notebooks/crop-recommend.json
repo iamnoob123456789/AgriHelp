@@ -1,0 +1,142 @@
+[
+  {
+    "Crop Name": "Rice",
+    "Reason to Grow": "High demand as a global staple provides market stability and reliable income.",
+    "Advantages": "High yield potential and a guaranteed market.",
+    "Disadvantages": "Extremely water-intensive and requires high input costs for nitrogen.",
+    "Farming Tips": "Implement water-saving techniques like SRI and apply Urea in split doses to minimize losses."
+  },
+  {
+    "Crop Name": "Maize",
+    "Reason to Grow": "Its versatility for food, feed, and industry ensures massive, diversified market demand.",
+    "Advantages": "High-yielding and widely adaptable to different climates.",
+    "Disadvantages": "Requires significant Nitrogen and careful water management to achieve optimal yield.",
+    "Farming Tips": "Ensure adequate Nitrogen (Urea) is available during the critical knee-high growth stage for maximum grain yield."
+  },
+  {
+    "Crop Name": "Blackgram",
+    "Reason to Grow": "Excellent for soil enrichment and nitrogen fixation, benefiting subsequent crops.",
+    "Advantages": "High market demand for its black color and high protein content.",
+    "Disadvantages": "Susceptible to the yellow mosaic virus.",
+    "Farming Tips": "Ensure good seed quality and choose disease-resistant varieties."
+  },
+  {
+    "Crop Name": "Chickpea",
+    "Reason to Grow": "It fixes N and acts as a natural fertilizer, making it excellent for soil health and rotation.",
+    "Advantages": "Low irrigation requirement (good for rainfed conditions).",
+    "Disadvantages": "Highly susceptible to frost damage during flowering.",
+    "Farming Tips": "Use DAP (Phosphorus) at planting to promote strong, nitrogen-fixing root nodules."
+  },
+  {
+    "Crop Name": "Kidneybeans",
+    "Reason to Grow": "High nutritional value allows it to command premium prices in urban protein markets.",
+    "Advantages": "Good cash returns and also fixes atmospheric nitrogen.",
+    "Disadvantages": "Sensitive to waterlogging and can suffer from root rot.",
+    "Farming Tips": "Ensure well-drained soil and use Lime to correct acidity."
+  },
+  {
+    "Crop Name": "Lentil",
+    "Reason to Grow": "A valuable winter pulse with consistent demand and high market price.",
+    "Advantages": "Profitable during the winter season.",
+    "Disadvantages": "Sensitive to waterlogging and severe cold/frost.",
+    "Farming Tips": "Ensure well-drained soil and use minimum tillage practices to conserve moisture."
+  },
+  {
+    "Crop Name": "Mothbeans",
+    "Reason to Grow": "Chosen for its hardiness and suitability for marginal lands and extreme drought/heat.",
+    "Advantages": "Very low maintenance and input requirements.",
+    "Disadvantages": "Lower yield compared to other pulses in favorable conditions.",
+    "Farming Tips": "Focus on Water Retaining Fertilizer in arid zones."
+  },
+  {
+    "Crop Name": "Mungbean",
+    "Reason to Grow": "The fastest-maturing pulse (60-75 days), ideal for fitting into short rotation gaps as a catch crop.",
+    "Advantages": "Provides quick income and is highly nutritious.",
+    "Disadvantages": "Sensitive to heavy rainfall and water stagnation.",
+    "Farming Tips": "Use as a catch crop and ensure excellent field drainage."
+  },
+  {
+    "Crop Name": "Pigeonpeas",
+    "Reason to Grow": "Highly drought resistant, providing a crop even when rains fail in arid regions.",
+    "Advantages": "Can be grown as a beneficial intercrop.",
+    "Disadvantages": "Long-duration crop, tying up the land for many months.",
+    "Farming Tips": "Intercrop with short-duration crops to maximize land utilization."
+  },
+  {
+    "Crop Name": "Apple",
+    "Reason to Grow": "Premium market price ensures high returns in specific temperate zones.",
+    "Advantages": "High export potential and long storage life.",
+    "Disadvantages": "Requires high upfront investment and is maintenance-intensive (pruning, pest control).",
+    "Farming Tips": "Use MOP for optimal fruit quality and size."
+  },
+  {
+    "Crop Name": "Banana",
+    "Reason to Grow": "Produces fruit year-round in tropical climates, providing constant cash flow.",
+    "Advantages": "High-yielding and reliable cash crop.",
+    "Disadvantages": "Highly susceptible to wind damage and requires consistently high fertilizer and water input.",
+    "Farming Tips": "Apply Balanced NPK consistently and use drip irrigation."
+  },
+  {
+    "Crop Name": "Coconut",
+    "Reason to Grow": "Provides multipurpose utility (oil, water, fiber) and an extremely long productive lifespan.",
+    "Advantages": "Generates income for over 60 years.",
+    "Disadvantages": "Very long gestation period (5-8 years) before the first yield.",
+    "Farming Tips": "Requires high amounts of Potassium (MOP) for high yield and cyclone resistance."
+  },
+  {
+    "Crop Name": "Grapes",
+    "Reason to Grow": "High value due to the wine, raisin, and fresh fruit market, offering excellent export potential.",
+    "Advantages": "Quick returns (yields in 2-3 years).",
+    "Disadvantages": "Requires intensive pruning and trellising and is highly susceptible to fungal diseases.",
+    "Farming Tips": "Maintain excellent canopy management and use fungicides proactively."
+  },
+  {
+    "Crop Name": "Mango",
+    "Reason to Grow": "High profitability and stable market demand domestically and globally.",
+    "Advantages": "Very long productive life and low maintenance once established.",
+    "Disadvantages": "Long gestation period (3-5 years) and highly prone to diseases like anthracnose.",
+    "Farming Tips": "Focus on Potassium (MOP) and micronutrients before flowering to enhance fruit set and quality."
+  },
+  {
+    "Crop Name": "Muskmelon",
+    "Reason to Grow": "High seasonal demand as a popular, fast-growing summer fruit.",
+    "Advantages": "Short growth cycle ensures quick cash returns.",
+    "Disadvantages": "Has a very short shelf life and is sensitive to handling.",
+    "Farming Tips": "Requires careful Nitrogen management to ensure a balance between vine growth and fruit setting."
+  },
+  {
+    "Crop Name": "Orange",
+    "Reason to Grow": "High juice and fresh fruit demand ensures a stable, consistent market.",
+    "Advantages": "Long productive life (20+ years) and relative hardiness.",
+    "Disadvantages": "Susceptible to citrus greening disease and requires careful pH management.",
+    "Farming Tips": "Ensure the soil pH is optimal by using Lime or Gypsum as needed."
+  },
+  {
+    "Crop Name": "Papaya",
+    "Reason to Grow": "Offers the quickest returns among tree fruits, yielding within 10-12 months.",
+    "Advantages": "Fast rotation and high yield per plant.",
+    "Disadvantages": "Highly susceptible to ringspot virus and sensitive to strong winds.",
+    "Farming Tips": "Requires frequent, small doses of NPK (Balanced NPK) throughout its short lifespan."
+  },
+  {
+    "Crop Name": "Pomegranate",
+    "Reason to Grow": "Extremely tolerant of drought and semi-arid climates, offering high value.",
+    "Advantages": "High export potential and profitability.",
+    "Disadvantages": "Highly prone to devastating diseases like bacterial blight.",
+    "Farming Tips": "Requires Potassium (MOP) for fruit color and size, and demands excellent field sanitation."
+  },
+  {
+    "Crop Name": "Watermelon",
+    "Reason to Grow": "High seasonal demand provides quick profits during the summer months.",
+    "Advantages": "Very short crop duration (90-110 days) allows for quick rotation.",
+    "Disadvantages": "Requires intense short-term management and is prone to pests.",
+    "Farming Tips": "Use Water Retaining Fertilizer and Compost in sandy soils to maximize moisture."
+  },
+  {
+    "Crop Name": "Jute",
+    "Reason to Grow": "Provides essential industrial fiber for eco-friendly packaging, ensuring high market demand.",
+    "Advantages": "Beneficial to soil structure and provides good returns in low-lying areas.",
+    "Disadvantages": "The retting process (fiber extraction) is labor-intensive and water-polluting.",
+    "Farming Tips": "Requires high amounts of Nitrogen (Urea) and Potassium (MOP) for optimal fiber quality and yield."
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "Fertilizer Name": "Urea",
+    "Reason for Use": "To remedy severe nitrogen deficiency and stimulate crucial vegetative/leafy growth (critical for crops like Rice, Maize, Jute).",
+    "Advantages": "Highest N concentration (≈46%) of all solid fertilizers, making it the most cost-effective N source to transport and apply.",
+    "Disadvantages": "Highly volatile, meaning Nitrogen can be easily lost as ammonia gas if left on the soil surface.",
+    "Usage Tips": "Apply in split doses rather than all at once and immediately incorporate it into the soil or irrigate right after application to minimize volatilization losses."
+  },
+  {
+    "Fertilizer Name": "DAP (Di-Ammonium Phosphate)",
+    "Reason for Use": "To correct phosphorus deficiency; it promotes robust root development and early plant establishment, which is vital for all Pulses and new seedlings.",
+    "Advantages": "Simplifies application by providing both Phosphorus and a usable source of Nitrogen in one highly water-soluble granule.",
+    "Disadvantages": "Less effective in extreme pH soils (highly acidic or alkaline) where Phosphorus tends to get chemically 'locked up' or fixed by other minerals.",
+    "Usage Tips": "Must be applied at or just before planting (basal application), as Phosphorus moves poorly in the soil and needs to be placed near the root zone for immediate uptake."
+  },
+  {
+    "Fertilizer Name": "Muriate of Potash (MOP)",
+    "Reason for Use": "To correct potassium deficiency, a nutrient crucial for fruit quality, flower development, disease resistance, and regulating water movement within the plant.",
+    "Advantages": "Highly concentrated (60% K₂O) and typically the cheapest and most common form of potassium fertilizer available.",
+    "Disadvantages": "Contains chlorine, which can harm salt-sensitive crops in high doses or soils with poor drainage.",
+    "Usage Tips": "Apply it specifically before the reproductive stage (flowering/fruiting) for maximum impact on fruit size, color, and sugar content."
+  },
+  {
+    "Fertilizer Name": "Balanced NPK Fertilizer",
+    "Reason for Use": "For general-purpose fertilization in stable, well-structured loamy soils where no single nutrient is severely lacking, ensuring a reliable baseline of all three primary nutrients.",
+    "Advantages": "Simplifies fertilization logistics, as one application covers multiple needs, and is excellent for long-term nutrient maintenance.",
+    "Disadvantages": "An inefficient choice for correcting a critical, single-nutrient deficiency (e.g., severe N deficiency requires targeted Urea).",
+    "Usage Tips": "Only use this after a soil test confirms the soil needs general supplementation rather than targeted correction."
+  },
+  {
+    "Fertilizer Name": "Lime",
+    "Reason for Use": "To neutralize acidic soil (low pH), thereby correcting the environment so that other existing nutrients become soluble and available for plant uptake.",
+    "Advantages": "Provides a long-lasting effect (often several years) and significantly improves the efficiency of other chemical and organic fertilizers.",
+    "Disadvantages": "Slow-acting, with results taking several months to fully materialize, and over-application can cause secondary micronutrient deficiencies.",
+    "Usage Tips": "Should be applied well in advance of planting (ideally pre-monsoon) and thoroughly incorporated into the soil."
+  },
+  {
+    "Fertilizer Name": "Gypsum",
+    "Reason for Use": "To correct alkaline/sodic soil (high sodium) by adding Calcium and Sulfur, which improves soil structure and water infiltration.",
+    "Advantages": "Essential for reclaiming saline/sodic soils and improves the physical quality of heavy clay soils.",
+    "Disadvantages": "Does not significantly change the pH of acidic soils; its primary role is structural correction and Ca/S supply.",
+    "Usage Tips": "Use it as a soil amendment, applying it to the surface and following immediately with irrigation to wash the excess salts/sodium away from the root zone."
+  },
+  {
+    "Fertilizer Name": "Compost",
+    "Reason for Use": "To enhance organic matter and structurally improve soil structure (aeration, porosity) in soils low in carbon content.",
+    "Advantages": "Provides a broad spectrum of micronutrients and greatly boosts the soil's water-holding capacity and overall biological life.",
+    "Disadvantages": "Nutrient content is low and highly variable compared to chemical fertilizers, requiring large volumes for significant nutritional impact.",
+    "Usage Tips": "Should be used as the best foundation for long-term soil health, either top-dressed or incorporated deeply before planting."
+  },
+  {
+    "Fertilizer Name": "Organic Fertilizer",
+    "Reason for Use": "To enhance fertility naturally and support sustainable farming practices, providing sustained nutrient release.",
+    "Advantages": "Improves overall soil health and provides nutrients slowly and steadily over time, which reduces the risk of nutrient leaching and runoff.",
+    "Disadvantages": "Slower acting than chemical fertilizers, making it less suitable for quickly correcting immediate, severe nutrient deficiencies.",
+    "Usage Tips": "Best used as a slow-release, sustained nutrient source throughout the growing cycle, sometimes requiring supplementation from fast-acting fertilizers."
+  },
+  {
+    "Fertilizer Name": "General Purpose Fertilizer",
+    "Reason for Use": "Recommended when no specific deficiency is detected, serving to ensure baseline nutrition is met.",
+    "Advantages": "Provides a reliable buffer of essential nutrients without the risk of over-dosing on a single element.",
+    "Disadvantages": "Inefficient and potentially wasteful if a severe deficiency actually exists and requires targeted intervention.",
+    "Usage Tips": "Only use this as a maintenance fertilizer or for non-critical applications, always preceded by a recent soil test."
+  },
+  {
+    "Fertilizer Name": "Water Retaining Fertilizer",
+    "Reason for Use": "Used to improve water retention in low-moisture or sandy soils, effectively preventing water stress in plants.",
+    "Advantages": "Significantly saves irrigation water and minimizes plant damage during dry spells.",
+    "Disadvantages": "Can be costly and requires careful application to avoid localized over-hydration or creating waterlogging issues.",
+    "Usage Tips": "Best used when mixed into the topsoil or applied in localized bands near the roots, often combined with Compost for maximum benefit."
+  }
+]
