@@ -44,7 +44,7 @@ try:
     # AUTO-BUILD: Force model to build input shape (critical for .h5 + Keras 3)
     dummy_input = np.zeros((1, 256, 256, 3), dtype=np.float32)
     _ = disease_model.predict(dummy_input, verbose=0)
-    print(f"Disease model ready! Input shape: {disease_model.input.shape}")
+    print(f"Disease model ready! Input shape: {disease_model.inputs[0].shape}")
 
 except Exception as e:
     print(f"ERROR loading models: {str(e)}")

@@ -86,6 +86,11 @@ export function Blogs() {
                     <User className="h-4 w-4 lg:h-5 lg:w-5" />
                     <span>{blog.user.name}</span>
                   </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-gray-600 text-sm lg:text-base line-clamp-3 overflow-hidden text-ellipsis max-h-[4.5em] overflow-y-auto">
+                      {blog.content}
+                    </div>
+                  </div>
                   <div className="flex items-center space-x-2">
                     <Calendar className="h-4 w-4 lg:h-5 lg:w-5" />
                     <span>{new Date(blog.date).toLocaleDateString()}</span>
