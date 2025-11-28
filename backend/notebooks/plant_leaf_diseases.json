@@ -1,0 +1,96 @@
+[
+  {
+    "disease_name": "tomato_tomato_mosaic virus",
+    "causes": "A virus (ToMV) primarily spread through **mechanical contact** (touching infected plants, contaminated hands, tools, or clothing). Can also be spread by seeds.",
+    "remedy": "There is no chemical cure** for viral diseases. Immediately **remove and destroy** (burn or bag and discard) infected plants. Disinfect all tools and surfaces with a 10% bleach solution.",
+    "prevention": "Use **certified virus-free seeds/transplants**. Choose **resistant varieties**. Practice strict hygiene: wash hands thoroughly after handling tobacco products or suspected plants. Disinfect tools frequently."
+  },
+  {
+    "disease_name": "tomato_late_blight",
+    "causes": "Oomycete pathogen (*Phytophthora infestans*). Favored by **cool, wet weather** (temperatures between 60°F and 78°F) and **high humidity**.",
+    "remedy": "Apply approved **fungicides** (e.g., chlorothalonil, mancozeb) immediately upon first symptoms. **Remove and destroy** heavily infected foliage and fruit."
+  ,
+    "prevention": "Use **resistant varieties**. Ensure **proper plant spacing** for good air circulation. Apply **preventative fungicides** when weather conditions favor the disease. Avoid overhead watering."
+  },
+  {
+    "disease_name": "tomato_target_spot",
+    "causes": "Fungus (*Corynespora cassiicola*). Thrives in **warm temperatures** (77°F to 86°F) and periods of **leaf wetness** (high humidity).",
+    "remedy": "Apply **fungicides** labeled for target spot (e.g., those containing strobilurins). **Remove infected plant debris** from the soil surface to reduce inoculum."
+  ,
+    "prevention": "Practice **crop rotation** (at least 2-3 years without tomato/pepper/potato). Use **disease-free seeds**. Improve air circulation and avoid prolonged leaf wetness."
+  },
+  {
+    "disease_name": "tomato_leaf_mold",
+    "causes": "Fungus (*Passalora fulva*). Primarily a problem in protected cultivation (greenhouses) where **humidity is very high** (over 85%) and temperatures are moderate (68°F–77°F).",
+    "remedy": "Improve **air circulation and ventilation** to drop humidity below 85%. Apply appropriate **fungicides** (e.g., copper-based or chlorothalonil).",
+    "prevention": "Use **resistant tomato varieties**. Ensure **excellent ventilation** in greenhouses. Avoid overhead irrigation and reduce planting density."
+  },
+  {
+    "disease_name": "potato_late_blight",
+    "causes": "Oomycete pathogen (*Phytophthora infestans*). Same as tomato late blight, flourishing in **cool, wet weather**.",
+    "remedy": "Apply approved **fungicides** (often a combination of systemic and protectant types). **Destroy all infected tubers, haulms, and volunteer potato plants**."
+  ,
+    "prevention": "Use **certified disease-free seed potatoes**. Practice **hilling** (mounding soil around the stems) to prevent spores from washing down to the tubers. Apply preventative fungicides."
+  },
+  {
+    "disease_name": "tomato_bacterial_spot",
+    "causes": "Four species of **bacteria** (*Xanthomonas spp.*). Spread by splashing rain, overhead irrigation, and infected tools. Favored by **warm and rainy/humid conditions**.",
+    "remedy": "Apply **copper-based bactericides** often mixed with mancozeb. This primarily helps **slow the spread**, as bactericides do not cure existing spots."
+  ,
+    "prevention": "Use **certified disease-free seeds/transplants**. Choose highly **resistant varieties**. Avoid **working in the field when foliage is wet**. Practice **crop rotation**."
+  },
+  {
+    "disease_name": "tomato_spider_mites_two_spotted_spider_mite",
+    "causes": "Infestation by a tiny pest (**mite**) (*Tetranychus urticae*). Thrives in **hot, dry conditions** and dusty environments.",
+    "remedy": "Apply targeted **miticides** (not standard insecticides). Use **biological controls** (e.g., predatory mites). For small infestations, a strong jet of water can dislodge them."
+  ,
+    "prevention": "Maintain **adequate soil moisture** and humidity (mites dislike high humidity). Check the undersides of leaves regularly for webbing or tiny spots (stippling)."
+  },
+  {
+    "disease_name": "tomato_yello_leaf_curl_virus",
+    "causes": "A **virus** (*TYLCV*) transmitted **exclusively** by the **Whitefly** (*Bemisia tabaci*). The whitefly carries the virus from infected to healthy plants.",
+    "remedy": "There is **no cure** for the virus. **Remove and destroy** infected plants immediately to prevent the whitefly from spreading it to others. Control the vector (whitefly)."
+  ,
+    "prevention": "Use **resistant or tolerant varieties**. Aggressively **control whiteflies** with insecticides or reflective plastic mulch. Use fine-mesh nets or row covers to exclude the pest."
+  },
+  {
+    "disease_name": "pepper_bell_bacterial_spot",
+    "causes": "Bacteria (*Xanthomonas spp.*), same as the tomato disease. Spread through water, favored by **warm, humid weather**.",
+    "remedy": "Apply **copper-based bactericides** and mancozeb to manage the spread, especially important during periods of high moisture."
+  ,
+    "prevention": "Use **certified disease-free seeds** and water-tested transplants. Select **resistant pepper varieties**. Avoid overhead irrigation and practice **crop rotation**."
+  },
+  {
+    "disease_name": "potato_early_blight",
+    "causes": "Fungus (*Alternaria solani*). Favored by **warm, moist conditions** and often affects older, stressed plants (e.g., after tuber set).",
+    "remedy": "Apply protective **fungicides** (e.g., chlorothalonil, mancozeb) to prevent new infections. Ensure good fertility and watering to reduce plant stress."
+  ,
+    "prevention": "Practice a **3-year crop rotation**. Maintain a balanced fertilization program to prevent stress. Apply preventative fungicides during the growing season, particularly before flowering."
+  },
+  {
+    "disease_name": "tomato_septorial_leaf_spot",
+    "causes": "Fungus (*Septoria lycopersici*). Favored by **warm, humid weather** (temperatures 68°F–77°F) and periods of **high leaf wetness**.",
+    "remedy": "Apply approved **fungicides** (e.g., chlorothalonil, mancozeb). **Prune infected leaves** (only when dry) to reduce spore sources."
+  ,
+    "prevention": "**Crop rotation** (1-2 years). Stake or cage plants to keep foliage off the ground and improve air flow. Water the base of the plant, avoiding leaves."
+  },
+  {
+    "disease_name": "tomato_early_blight",
+    "causes": "Fungus (*Alternaria solani*). Same as potato early blight, common in tomato under **warm, moist conditions**.",
+    "remedy": "Apply approved **fungicides** (e.g., chlorothalonil, mancozeb) regularly. **Prune out the lowest, oldest infected leaves** to slow spread."
+  ,
+    "prevention": "Practice **crop rotation**. Plant in well-drained soil. Keep the soil surface covered with **mulch** to prevent fungal spores from splashing onto the lower leaves."
+  },
+  {
+    "disease_name": "tomato_healthy",
+    "prevention": "Use **certified disease-free seeds**. Maintain **consistent watering** and fertilization to avoid stress. Stake or cage plants for **maximum air circulation**. Practice a **3-4 year crop rotation** with non-host crops."
+  },
+  {
+    "disease_name": "potato_healthy",
+    "prevention": "Use **certified seed potatoes** that are firm and disease-free. Plant in **well-drained soil**. Practice **hilling** to cover emerging stems and protect tubers. Follow a strict **4-year crop rotation**."
+  },
+  {
+    "disease_name": "pepper_bell_healthy",
+    "prevention": "Use **certified disease-free seeds/transplants**. Plant in a **warm location with well-drained soil**. Water regularly and consistently at the base of the plant. Practice **crop rotation**."
+  }
+]
