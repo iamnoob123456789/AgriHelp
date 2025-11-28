@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Sprout, Loader2 } from 'lucide-react';
+import { Sprout, Loader2, Leaf } from 'lucide-react';
 import { predictCrop } from '../services/api';
+import cropData from '../../../backend/notebooks/crop-recommend.json';
 
 export function CropPrediction() {
   const [formData, setFormData] = useState({
@@ -136,6 +137,45 @@ export function CropPrediction() {
                       style={{ width: `${result.confidence}%` }}
                     ></div>
                   </div>
+                  {(() => {
+                    if (!result.crop) return null;
+                    const recommendedCrop = cropData.find(c => c["Crop Name"].toLowerCase() === result.crop.toLowerCase());
+
+                    if (!recommendedCrop) {
+                      return (
+                        <div className="mt-8 text-center text-gray-500">
+                          <p>Detailed information for "{result.crop}" is not yet available.</p>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div className="mt-8">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                          <Leaf className="h-6 w-6 mr-2 text-green-600" />
+                          Learn More About {recommendedCrop["Crop Name"]}
+                        </h3>
+                        <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+                          <div>
+                            <h4 className="font-semibold text-gray-700">Reason to Grow</h4>
+                            <p className="text-gray-600">{recommendedCrop["Reason to Grow"]}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-700">Advantages</h4>
+                            <p className="text-gray-600">{recommendedCrop["Advantages"]}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-700">Disadvantages</h4>
+                            <p className="text-gray-600">{recommendedCrop["Disadvantages"]}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-700">Farming Tips</h4>
+                            <p className="text-gray-600">{recommendedCrop["Farming Tips"]}</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
             ) : (

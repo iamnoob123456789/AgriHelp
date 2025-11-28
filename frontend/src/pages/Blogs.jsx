@@ -80,16 +80,14 @@ export function Blogs() {
                 <h2 className="text-xl lg:text-2xl font-bold text-gray-800 mb-3 hover:text-green-600 transition-colors">
                   {blog.title}
                 </h2>
-                <p className="text-gray-600 lg:text-lg mb-4 flex-grow">{blog.subtitle}</p>
+                <p className="text-gray-600 lg:text-lg mb-4">{blog.subtitle}</p>
+                <div className="text-gray-700 text-base mb-4 flex-grow prose prose-sm max-w-none">
+                  <p>{blog.content.substring(0, 200)}...</p>
+                </div>
                 <div className="flex items-center justify-between text-sm lg:text-base text-gray-500 border-t pt-4 mt-auto">
                   <div className="flex items-center space-x-2">
                     <User className="h-4 w-4 lg:h-5 lg:w-5" />
                     <span>{blog.user.name}</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-gray-600 text-sm lg:text-base line-clamp-3 overflow-hidden text-ellipsis max-h-[4.5em] overflow-y-auto">
-                      {blog.content}
-                    </div>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Calendar className="h-4 w-4 lg:h-5 lg:w-5" />

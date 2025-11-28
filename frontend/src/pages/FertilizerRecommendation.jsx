@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Droplets, Loader2 } from 'lucide-react';
+import { Droplets, Loader2, FlaskConical } from 'lucide-react';
 import { predictFertilizer } from '../services/api';
+import fertilizerData from '../../../backend/notebooks/fertilizer-recommend.json';
 
 export function FertilizerRecommendation() {
   const [formData, setFormData] = useState({
@@ -267,6 +268,45 @@ export function FertilizerRecommendation() {
                       style={{ width: `${result.confidence}%` }}
                     ></div>
                   </div>
+                  {(() => {
+                    if (!result.fertilizer) return null;
+                    const recommendedFertilizer = fertilizerData.find(f => f["Fertilizer Name"].toLowerCase() === result.fertilizer.toLowerCase());
+
+                    if (!recommendedFertilizer) {
+                      return (
+                        <div className="mt-8 text-center text-gray-500">
+                          <p>Detailed information for "{result.fertilizer}" is not yet available.</p>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div className="mt-8">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                          <FlaskConical className="h-6 w-6 mr-2 text-blue-600" />
+                          Learn More About {recommendedFertilizer["Fertilizer Name"]}
+                        </h3>
+                        <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+                          <div>
+                            <h4 className="font-semibold text-gray-700">Reason for Use</h4>
+                            <p className="text-gray-600">{recommendedFertilizer["Reason for Use"]}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-700">Advantages</h4>
+                            <p className="text-gray-600">{recommendedFertilizer["Advantages"]}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-700">Disadvantages</h4>
+                            <p className="text-gray-600">{recommendedFertilizer["Disadvantages"]}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-700">Usage Tips</h4>
+                            <p className="text-gray-600">{recommendedFertilizer["Usage Tips"]}</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
             ) : (
