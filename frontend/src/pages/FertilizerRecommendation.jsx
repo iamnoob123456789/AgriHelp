@@ -34,7 +34,14 @@ export function FertilizerRecommendation() {
 
     try {
       const recommendation = await predictFertilizer(formData);
-      setResult(recommendation);
+      const recommendedFertilizer = fertilizerData.find(
+        (f) => f['Fertilizer Name'].toLowerCase() === recommendation.fertilizer.toLowerCase()
+      );
+      const imageUrl = recommendedFertilizer
+        ? `http://localhost:5000${recommendedFertilizer['Image-path'].replace('/backend', '')}`
+        : '';
+      setResult({ ...recommendation, imageUrl });
+      setLoading(false);
     } catch (error) {
       console.error('Recommendation failed:', error);
       setLoading(false);

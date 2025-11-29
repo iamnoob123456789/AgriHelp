@@ -31,7 +31,14 @@ export function CropPrediction() {
 
     try {
       const prediction = await predictCrop(formData);
-      setResult(prediction);
+      const recommendedCrop = cropData.find(
+        (c) => c['Crop Name'].toLowerCase() === prediction.crop.toLowerCase()
+      );
+      const imageUrl = recommendedCrop
+        ? `http://localhost:5000${recommendedCrop['Image-path'].replace('/backend', '')}`
+        : '';
+      setResult({ ...prediction, imageUrl });
+      setLoading(false);
     } catch (error) {
       console.error('Prediction failed:', error);
       setLoading(false);

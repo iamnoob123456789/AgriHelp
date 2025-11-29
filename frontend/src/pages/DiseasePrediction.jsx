@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Bug, Upload, Loader2, X } from 'lucide-react';
+import { Bug, Upload, Loader2, X, ShieldCheck, Siren, HeartPulse } from 'lucide-react';
 import { predictDisease } from '../services/api';
+import diseaseData from '../../../backend/notebooks/plant_leaf_diseases.json';
 
 export function DiseaseDetection() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -36,11 +37,11 @@ export function DiseaseDetection() {
 
     try {
       const prediction = await predictDisease(selectedFile);
-      setResult({
-        disease: prediction.disease,
-        confidence: prediction.confidence,
-        remedies: prediction.remedies || ["No specific remedy available."]
-      });
+      const diseaseInfo = diseaseData.find(
+        (d) => d.disease_name.toLowerCase() === prediction.disease.toLowerCase()
+      );
+      setResult({ ...prediction, details: diseaseInfo });
+      setLoading(false);
     } catch (error) {
       console.error('Detection failed:', error);
       setLoading(false);
@@ -134,27 +135,55 @@ export function DiseaseDetection() {
             {result ? (
               <div className="bg-white rounded-2xl shadow-xl p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Detection Result</h2>
-                <div className="space-y-6">
-                  <div className="mb-4">
+                <div className="space-y-4">
+                  <div className="bg-gray-50 rounded-lg p-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-gray-600">Detected Disease</span>
-                      <span className="text-sm font-medium text-orange-600">
-                        {result.disease}
+                      <span className="text-lg font-bold text-orange-600">
+                        {result.disease.replace(/_/g, ' ')}
                       </span>
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div className="w-full bg-gray-200 rounded-full h-2.5">
+                      <div
+                        className="bg-gradient-to-r from-orange-400 to-red-500 h-2.5 rounded-full"
+                        style={{ width: `${result.confidence}%` }}
+                      ></div>
+                    </div>
+                    <div className="text-right text-sm text-gray-500 mt-1">
                       Confidence: {result.confidence.toFixed(2)}%
                     </div>
                   </div>
 
-                  {result.remedies && result.remedies.length > 0 && (
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                      <h3 className="font-semibold text-blue-800 mb-2">Recommended Actions:</h3>
-                      <ul className="list-disc pl-5 space-y-1 text-blue-700">
-                        {result.remedies.map((remedy, index) => (
-                          <li key={index}>{remedy}</li>
-                        ))}
-                      </ul>
+                  {result.details ? (
+                    <div className="space-y-4">
+                      {result.details.causes && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                          <h3 className="font-semibold text-red-800 mb-2 flex items-center">
+                            <Siren className="h-5 w-5 mr-2" /> Causes
+                          </h3>
+                          <p className="text-red-700">{result.details.causes}</p>
+                        </div>
+                      )}
+                      {result.details.remedy && (
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                          <h3 className="font-semibold text-blue-800 mb-2 flex items-center">
+                            <HeartPulse className="h-5 w-5 mr-2" /> Remedy
+                          </h3>
+                          <p className="text-blue-700">{result.details.remedy}</p>
+                        </div>
+                      )}
+                      {result.details.prevention && (
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                          <h3 className="font-semibold text-green-800 mb-2 flex items-center">
+                            <ShieldCheck className="h-5 w-5 mr-2" /> Prevention
+                          </h3>
+                          <p className="text-green-700">{result.details.prevention}</p>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="text-center text-gray-500 py-4">
+                      <p>Detailed information for "{result.disease}" is not yet available.</p>
                     </div>
                   )}
                 </div>
