@@ -9,21 +9,24 @@ import { CropPrediction } from './pages/CropPrediction';
 import { FertilizerRecommendation } from './pages/FertilizerRecommendation';
 import { DiseaseDetection } from "./pages/DiseasePrediction";
 import { Blogs } from './pages/Blogs';
-import { AdminDashboard } from './pages/AdminDashboard';
+
 import { Settings } from './pages/Settings';
 import { AddBlog } from './pages/addBlog';
-import  AdminLogin  from './pages/AdminLogin';
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }/>
           <Route
             path="/crop-prediction"
             element={
@@ -45,14 +48,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <DiseaseDetection />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
               </ProtectedRoute>
             }
           />

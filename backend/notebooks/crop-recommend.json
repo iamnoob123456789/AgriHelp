@@ -1,6 +1,7 @@
 [
   {
     "Crop Name": "Rice",
+    "Image-path":"/backend/images/crop-recommendation/rice.png",
     "Reason to Grow": "High demand as a global staple provides market stability and reliable income.",
     "Advantages": "High yield potential and a guaranteed market.",
     "Disadvantages": "Extremely water-intensive and requires high input costs for nitrogen.",
@@ -8,6 +9,7 @@
   },
   {
     "Crop Name": "Maize",
+    "Image-path":"/backend/images/crop-recommendation/maize.png",
     "Reason to Grow": "Its versatility for food, feed, and industry ensures massive, diversified market demand.",
     "Advantages": "High-yielding and widely adaptable to different climates.",
     "Disadvantages": "Requires significant Nitrogen and careful water management to achieve optimal yield.",
@@ -15,6 +17,7 @@
   },
   {
     "Crop Name": "Blackgram",
+    "Image-path":"/backend/images/crop-recommendation/blackgram.png",
     "Reason to Grow": "Excellent for soil enrichment and nitrogen fixation, benefiting subsequent crops.",
     "Advantages": "High market demand for its black color and high protein content.",
     "Disadvantages": "Susceptible to the yellow mosaic virus.",
@@ -22,6 +25,7 @@
   },
   {
     "Crop Name": "Chickpea",
+      "Image-path":"/backend/images/crop-recommendation/chickpea.png",
     "Reason to Grow": "It fixes N and acts as a natural fertilizer, making it excellent for soil health and rotation.",
     "Advantages": "Low irrigation requirement (good for rainfed conditions).",
     "Disadvantages": "Highly susceptible to frost damage during flowering.",
@@ -29,6 +33,7 @@
   },
   {
     "Crop Name": "Kidneybeans",
+    "Image-path":"/backend/images/crop-recommendation/kidneybeans.png",
     "Reason to Grow": "High nutritional value allows it to command premium prices in urban protein markets.",
     "Advantages": "Good cash returns and also fixes atmospheric nitrogen.",
     "Disadvantages": "Sensitive to waterlogging and can suffer from root rot.",
@@ -36,6 +41,7 @@
   },
   {
     "Crop Name": "Lentil",
+    "Image-path":"/backend/images/crop-recommendation/lentil.png",
     "Reason to Grow": "A valuable winter pulse with consistent demand and high market price.",
     "Advantages": "Profitable during the winter season.",
     "Disadvantages": "Sensitive to waterlogging and severe cold/frost.",
@@ -43,6 +49,7 @@
   },
   {
     "Crop Name": "Mothbeans",
+    "Image-path":"/backend/images/crop-recommendation/mothbeans.png",
     "Reason to Grow": "Chosen for its hardiness and suitability for marginal lands and extreme drought/heat.",
     "Advantages": "Very low maintenance and input requirements.",
     "Disadvantages": "Lower yield compared to other pulses in favorable conditions.",
@@ -50,6 +57,7 @@
   },
   {
     "Crop Name": "Mungbean",
+    "Image-path":"/backend/images/crop-recommendation/mungbean.png",
     "Reason to Grow": "The fastest-maturing pulse (60-75 days), ideal for fitting into short rotation gaps as a catch crop.",
     "Advantages": "Provides quick income and is highly nutritious.",
     "Disadvantages": "Sensitive to heavy rainfall and water stagnation.",
@@ -57,6 +65,7 @@
   },
   {
     "Crop Name": "Pigeonpeas",
+    "Image-path":"/backend/images/crop-recommendation/pigeonpeas.png",
     "Reason to Grow": "Highly drought resistant, providing a crop even when rains fail in arid regions.",
     "Advantages": "Can be grown as a beneficial intercrop.",
     "Disadvantages": "Long-duration crop, tying up the land for many months.",
@@ -64,6 +73,7 @@
   },
   {
     "Crop Name": "Apple",
+    "Image-path":"/backend/images/crop-recommendation/apple.png",
     "Reason to Grow": "Premium market price ensures high returns in specific temperate zones.",
     "Advantages": "High export potential and long storage life.",
     "Disadvantages": "Requires high upfront investment and is maintenance-intensive (pruning, pest control).",
@@ -71,6 +81,7 @@
   },
   {
     "Crop Name": "Banana",
+    "Image-path":"/backend/images/crop-recommendation/banana.png",
     "Reason to Grow": "Produces fruit year-round in tropical climates, providing constant cash flow.",
     "Advantages": "High-yielding and reliable cash crop.",
     "Disadvantages": "Highly susceptible to wind damage and requires consistently high fertilizer and water input.",
@@ -78,6 +89,7 @@
   },
   {
     "Crop Name": "Coconut",
+    "Image-path":"/backend/images/crop-recommendation/coconut.png",
     "Reason to Grow": "Provides multipurpose utility (oil, water, fiber) and an extremely long productive lifespan.",
     "Advantages": "Generates income for over 60 years.",
     "Disadvantages": "Very long gestation period (5-8 years) before the first yield.",
@@ -85,6 +97,7 @@
   },
   {
     "Crop Name": "Grapes",
+    "Image-path":"/backend/images/crop-recommendation/grapes.png",
     "Reason to Grow": "High value due to the wine, raisin, and fresh fruit market, offering excellent export potential.",
     "Advantages": "Quick returns (yields in 2-3 years).",
     "Disadvantages": "Requires intensive pruning and trellising and is highly susceptible to fungal diseases.",
@@ -92,6 +105,7 @@
   },
   {
     "Crop Name": "Mango",
+    "Image-path":"/backend/images/crop-recommendation/mango.png",
     "Reason to Grow": "High profitability and stable market demand domestically and globally.",
     "Advantages": "Very long productive life and low maintenance once established.",
     "Disadvantages": "Long gestation period (3-5 years) and highly prone to diseases like anthracnose.",
@@ -99,6 +113,7 @@
   },
   {
     "Crop Name": "Muskmelon",
+    "Image-path":"/backend/images/crop-recommendation/muskmelon.png",
     "Reason to Grow": "High seasonal demand as a popular, fast-growing summer fruit.",
     "Advantages": "Short growth cycle ensures quick cash returns.",
     "Disadvantages": "Has a very short shelf life and is sensitive to handling.",
@@ -106,6 +121,7 @@
   },
   {
     "Crop Name": "Orange",
+    "Image-path":"/backend/images/crop-recommendation/orange.png",
     "Reason to Grow": "High juice and fresh fruit demand ensures a stable, consistent market.",
     "Advantages": "Long productive life (20+ years) and relative hardiness.",
     "Disadvantages": "Susceptible to citrus greening disease and requires careful pH management.",
@@ -113,6 +129,7 @@
   },
   {
     "Crop Name": "Papaya",
+    "Image-path":"/backend/images/crop-recommendation/papaya.png",
     "Reason to Grow": "Offers the quickest returns among tree fruits, yielding within 10-12 months.",
     "Advantages": "Fast rotation and high yield per plant.",
     "Disadvantages": "Highly susceptible to ringspot virus and sensitive to strong winds.",
@@ -120,6 +137,7 @@
   },
   {
     "Crop Name": "Pomegranate",
+    "Image-path":"/backend/images/crop-recommendation/pomegranate.png",
     "Reason to Grow": "Extremely tolerant of drought and semi-arid climates, offering high value.",
     "Advantages": "High export potential and profitability.",
     "Disadvantages": "Highly prone to devastating diseases like bacterial blight.",
@@ -127,6 +145,7 @@
   },
   {
     "Crop Name": "Watermelon",
+    "Image-path":"/backend/images/crop-recommendation/watermelon.png",
     "Reason to Grow": "High seasonal demand provides quick profits during the summer months.",
     "Advantages": "Very short crop duration (90-110 days) allows for quick rotation.",
     "Disadvantages": "Requires intense short-term management and is prone to pests.",
@@ -134,6 +153,7 @@
   },
   {
     "Crop Name": "Jute",
+    "Image-path":"/backend/images/crop-recommendation/jute.png",
     "Reason to Grow": "Provides essential industrial fiber for eco-friendly packaging, ensuring high market demand.",
     "Advantages": "Beneficial to soil structure and provides good returns in low-lying areas.",
     "Disadvantages": "The retting process (fiber extraction) is labor-intensive and water-polluting.",

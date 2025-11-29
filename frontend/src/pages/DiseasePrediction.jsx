@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { Bug, Upload, Loader2, X, ShieldCheck, Siren, HeartPulse } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Bug, Upload, Loader2, X, ShieldCheck, Siren, HeartPulse, Download } from 'lucide-react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import { predictDisease } from '../services/api';
 import diseaseData from '../../../backend/notebooks/plant_leaf_diseases.json';
 
@@ -8,6 +10,7 @@ export function DiseaseDetection() {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const resultRef = useRef(null);
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
@@ -45,6 +48,19 @@ export function DiseaseDetection() {
     } catch (error) {
       console.error('Detection failed:', error);
       setLoading(false);
+    }
+  };
+
+  const handleExport = () => {
+    if (resultRef.current) {
+      html2canvas(resultRef.current).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('disease-detection-result.pdf');
+      });
     }
   };
 
@@ -133,7 +149,7 @@ export function DiseaseDetection() {
 
           <div>
             {result ? (
-              <div className="bg-white rounded-2xl shadow-xl p-8">
+              <div ref={resultRef} className="bg-white rounded-2xl shadow-xl p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Detection Result</h2>
                 <div className="space-y-4">
                   <div className="bg-gray-50 rounded-lg p-4">
@@ -186,6 +202,13 @@ export function DiseaseDetection() {
                       <p>Detailed information for "{result.disease}" is not yet available.</p>
                     </div>
                   )}
+                  <button
+                    onClick={handleExport}
+                    className="w-full mt-4 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all flex items-center justify-center space-x-2"
+                  >
+                    <Download className="h-5 w-5" />
+                    <span>Export Results</span>
+                  </button>
                 </div>
               </div>
             ) : (

@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { Sprout, Loader2, Leaf } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Sprout, Loader2, Leaf, Download } from 'lucide-react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import { predictCrop } from '../services/api';
 import cropData from '../../../backend/notebooks/crop-recommend.json';
 
@@ -15,6 +17,7 @@ export function CropPrediction() {
   });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const resultRef = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -42,6 +45,19 @@ export function CropPrediction() {
     } catch (error) {
       console.error('Prediction failed:', error);
       setLoading(false);
+    }
+  };
+
+  const handleExport = () => {
+    if (resultRef.current) {
+      html2canvas(resultRef.current, { useCORS: true }).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('crop-prediction-result.pdf');
+      });
     }
   };
 
@@ -113,7 +129,7 @@ export function CropPrediction() {
 
           <div>
             {result ? (
-              <div className="bg-white rounded-2xl shadow-xl p-8">
+              <div ref={resultRef} className="bg-white rounded-2xl shadow-xl p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Prediction Result</h2>
                 <div className="space-y-6">
                   <div className="aspect-video rounded-lg overflow-hidden bg-gray-100">
@@ -121,6 +137,7 @@ export function CropPrediction() {
                       src={result.imageUrl}
                       alt={result.crop}
                       className="w-full h-full object-cover"
+                      crossOrigin="anonymous"
                     />
                   </div>
                   <div>
@@ -183,6 +200,13 @@ export function CropPrediction() {
                       </div>
                     );
                   })()}
+                  <button
+                    onClick={handleExport}
+                    className="w-full mt-4 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all flex items-center justify-center space-x-2"
+                  >
+                    <Download className="h-5 w-5" />
+                    <span>Export Results</span>
+                  </button>
                 </div>
               </div>
             ) : (

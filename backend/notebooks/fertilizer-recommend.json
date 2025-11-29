@@ -1,6 +1,7 @@
 [
   {
     "Fertilizer Name": "Urea",
+    "Image-path":"/backend/images/fertilizer-recommendation/urea.png",
     "Reason for Use": "To remedy severe nitrogen deficiency and stimulate crucial vegetative/leafy growth (critical for crops like Rice, Maize, Jute).",
     "Advantages": "Highest N concentration (≈46%) of all solid fertilizers, making it the most cost-effective N source to transport and apply.",
     "Disadvantages": "Highly volatile, meaning Nitrogen can be easily lost as ammonia gas if left on the soil surface.",
@@ -8,6 +9,7 @@
   },
   {
     "Fertilizer Name": "DAP (Di-Ammonium Phosphate)",
+    "Image-path":"/backend/images/fertilizer-recommendation/DAP.png",
     "Reason for Use": "To correct phosphorus deficiency; it promotes robust root development and early plant establishment, which is vital for all Pulses and new seedlings.",
     "Advantages": "Simplifies application by providing both Phosphorus and a usable source of Nitrogen in one highly water-soluble granule.",
     "Disadvantages": "Less effective in extreme pH soils (highly acidic or alkaline) where Phosphorus tends to get chemically 'locked up' or fixed by other minerals.",
@@ -15,6 +17,7 @@
   },
   {
     "Fertilizer Name": "Muriate of Potash (MOP)",
+    "Image-path":"/backend/images/fertilizer-recommendation/Muriate-Of-Potash.png",
     "Reason for Use": "To correct potassium deficiency, a nutrient crucial for fruit quality, flower development, disease resistance, and regulating water movement within the plant.",
     "Advantages": "Highly concentrated (60% K₂O) and typically the cheapest and most common form of potassium fertilizer available.",
     "Disadvantages": "Contains chlorine, which can harm salt-sensitive crops in high doses or soils with poor drainage.",
@@ -22,6 +25,7 @@
   },
   {
     "Fertilizer Name": "Balanced NPK Fertilizer",
+    "Image-path":"/backend/images/fertilizer-recommendation/Balanced-NPK.png",
     "Reason for Use": "For general-purpose fertilization in stable, well-structured loamy soils where no single nutrient is severely lacking, ensuring a reliable baseline of all three primary nutrients.",
     "Advantages": "Simplifies fertilization logistics, as one application covers multiple needs, and is excellent for long-term nutrient maintenance.",
     "Disadvantages": "An inefficient choice for correcting a critical, single-nutrient deficiency (e.g., severe N deficiency requires targeted Urea).",
@@ -29,6 +33,7 @@
   },
   {
     "Fertilizer Name": "Lime",
+    "Image-path":"/backend/images/fertilizer-recommendation/lime.png",
     "Reason for Use": "To neutralize acidic soil (low pH), thereby correcting the environment so that other existing nutrients become soluble and available for plant uptake.",
     "Advantages": "Provides a long-lasting effect (often several years) and significantly improves the efficiency of other chemical and organic fertilizers.",
     "Disadvantages": "Slow-acting, with results taking several months to fully materialize, and over-application can cause secondary micronutrient deficiencies.",
@@ -36,6 +41,7 @@
   },
   {
     "Fertilizer Name": "Gypsum",
+    "Image-path":"/backend/images/fertilizer-recommendation/Gypsum.png",
     "Reason for Use": "To correct alkaline/sodic soil (high sodium) by adding Calcium and Sulfur, which improves soil structure and water infiltration.",
     "Advantages": "Essential for reclaiming saline/sodic soils and improves the physical quality of heavy clay soils.",
     "Disadvantages": "Does not significantly change the pH of acidic soils; its primary role is structural correction and Ca/S supply.",
@@ -43,6 +49,7 @@
   },
   {
     "Fertilizer Name": "Compost",
+    "Image-path":"/backend/images/fertilizer-recommendation/Compost.png",
     "Reason for Use": "To enhance organic matter and structurally improve soil structure (aeration, porosity) in soils low in carbon content.",
     "Advantages": "Provides a broad spectrum of micronutrients and greatly boosts the soil's water-holding capacity and overall biological life.",
     "Disadvantages": "Nutrient content is low and highly variable compared to chemical fertilizers, requiring large volumes for significant nutritional impact.",
@@ -50,6 +57,7 @@
   },
   {
     "Fertilizer Name": "Organic Fertilizer",
+    "Image-path":"/backend/images/fertilizer-recommendation/Organic.png",
     "Reason for Use": "To enhance fertility naturally and support sustainable farming practices, providing sustained nutrient release.",
     "Advantages": "Improves overall soil health and provides nutrients slowly and steadily over time, which reduces the risk of nutrient leaching and runoff.",
     "Disadvantages": "Slower acting than chemical fertilizers, making it less suitable for quickly correcting immediate, severe nutrient deficiencies.",
@@ -57,6 +65,7 @@
   },
   {
     "Fertilizer Name": "General Purpose Fertilizer",
+    "Image-path":"/backend/images/fertilizer-recommendation/General-Purpose.png",
     "Reason for Use": "Recommended when no specific deficiency is detected, serving to ensure baseline nutrition is met.",
     "Advantages": "Provides a reliable buffer of essential nutrients without the risk of over-dosing on a single element.",
     "Disadvantages": "Inefficient and potentially wasteful if a severe deficiency actually exists and requires targeted intervention.",
@@ -64,6 +73,7 @@
   },
   {
     "Fertilizer Name": "Water Retaining Fertilizer",
+    "Image-path":"/backend/images/fertilizer-recommendation/water-retaining.png",
     "Reason for Use": "Used to improve water retention in low-moisture or sandy soils, effectively preventing water stress in plants.",
     "Advantages": "Significantly saves irrigation water and minimizes plant damage during dry spells.",
     "Disadvantages": "Can be costly and requires careful application to avoid localized over-hydration or creating waterlogging issues.",

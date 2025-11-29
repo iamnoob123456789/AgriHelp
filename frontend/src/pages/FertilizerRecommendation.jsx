@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { Droplets, Loader2, FlaskConical } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Droplets, Loader2, FlaskConical, Download } from 'lucide-react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import { predictFertilizer } from '../services/api';
 import fertilizerData from '../../../backend/notebooks/fertilizer-recommend.json';
 
@@ -18,6 +20,7 @@ export function FertilizerRecommendation() {
   });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const resultRef = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,6 +48,19 @@ export function FertilizerRecommendation() {
     } catch (error) {
       console.error('Recommendation failed:', error);
       setLoading(false);
+    }
+  };
+
+  const handleExport = () => {
+    if (resultRef.current) {
+      html2canvas(resultRef.current, { useCORS: true }).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('fertilizer-recommendation-result.pdf');
+      });
     }
   };
 
@@ -247,7 +263,7 @@ export function FertilizerRecommendation() {
 
           <div>
             {result ? (
-              <div className="bg-white rounded-2xl shadow-xl p-8">
+              <div ref={resultRef} className="bg-white rounded-2xl shadow-xl p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Recommendation Result</h2>
                 <div className="space-y-6">
                   <div className="aspect-video rounded-lg overflow-hidden bg-gray-100">
@@ -255,6 +271,7 @@ export function FertilizerRecommendation() {
                       src={result.imageUrl}
                       alt={result.fertilizer}
                       className="w-full h-full object-cover"
+                      crossOrigin="anonymous"
                     />
                   </div>
                   <div>
@@ -314,6 +331,13 @@ export function FertilizerRecommendation() {
                       </div>
                     );
                   })()}
+                  <button
+                    onClick={handleExport}
+                    className="w-full mt-4 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all flex items-center justify-center space-x-2"
+                  >
+                    <Download className="h-5 w-5" />
+                    <span>Export Results</span>
+                  </button>
                 </div>
               </div>
             ) : (
